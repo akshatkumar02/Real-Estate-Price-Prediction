@@ -18,6 +18,9 @@ function getBHKValue() {
   return -1; // Invalid Value
 }
 
+// ✅ Use Render backend URL here
+const BASE_URL = "https://real-estate-price-prediction-api-67t8.onrender.com";
+
 function onClickedEstimatePrice() {
   console.log("Estimate price button clicked");
   var sqft = document.getElementById("uiSqft");
@@ -26,7 +29,7 @@ function onClickedEstimatePrice() {
   var location = document.getElementById("uiLocations");
   var estPrice = document.getElementById("uiEstimatedPrice");
 
-  var url = "http://127.0.0.1:5000/predict_home_price";
+  var url = `${BASE_URL}/predict_home_price`;
 
   $.ajax({
     url: url,
@@ -50,7 +53,8 @@ function onClickedEstimatePrice() {
 
 function onPageLoad() {
   console.log("document loaded");
-  var url = "http://127.0.0.1:5000/get_location_names";
+  var url = `${BASE_URL}/get_location_names`;
+
   $.get(url, function(data, status) {
     console.log("got response for get_location_names request");
     if (data) {
